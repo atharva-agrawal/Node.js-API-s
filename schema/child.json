@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "/child-schema",
+    "title": "child-schema",
+    "description": "This Schema takes all the child fields",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type" : "string"
+        },
+        "sex": {
+            "type" : "string"
+        },
+        "dob":  {
+            "type" : "string"
+        },
+        "father_name" : {
+            "type" : "string"
+        },
+        "mother_name" : {
+            "type" : "string"
+        },
+        "district_id" : {
+            "type" : "number"
+        },
+        "photo" : {
+            "type" : "string"
+        }
+    }
+}

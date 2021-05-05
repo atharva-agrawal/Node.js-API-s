@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "/district-schema",
+    "title": "distrcit-schema",
+    "description": "This Schema takes district fields",
+    "type": "object",
+    "properties": {
+        "state_id" : {
+            "type" : "string"
+        },
+        "district_name" : {
+            "type" : "string"
+        }
+    }
+}

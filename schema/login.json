@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "/user-schema",
+    "title": "user-schema",
+    "description": "This Schema takes user login fields",
+    "type": "object",
+    "properties": {
+        "username" : {
+            "type" : "string"
+        },
+        "password" : {
+            "type" : "string"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "/state-schema",
+    "title": "state-schema",
+    "description": "This Schema takes state fields",
+    "type": "object",
+    "properties": {
+        "state_name" : {
+            "type" : "string"
+        },
+        "state_id" : {
+            "type" : "string"
+        }
+    }
+}
