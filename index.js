@@ -15,15 +15,8 @@ app.use(bodyParser.urlencoded());
 config.mongoconnect();
 
 //DEFINE ROUTES
-app.use("/signup", require("./routes/signup"));
-app.use("/login", require("./routes/login"));
-app.use("/logout", require("./routes/logout"));
-app.use("/getState", require("./routes/getState"));
-app.use("/postState", require("./routes/postState"));
-app.use("/getDistrict", require("./routes/getDistrict"));
-app.use("/postDistrict", require("./routes/postDistrict"));
-app.use("/getChild", require("./routes/getChild"));
-app.use("/postChild", require("./routes/postChild"));
+app.use("", router);
+
 
 //START SERVER
 const PORT = process.env.PORT || config.port;

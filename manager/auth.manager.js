@@ -24,7 +24,13 @@ class AuthManager{
       const { userName, password } = checkCredentials;
       const checkPassword = await bcrypt.compare(pwd, password);
       if(bodyParams.username == userName && checkPassword){
-        return 1;
+        const accessToken = jwt.sign(
+          {
+            userName,
+          },
+          { expiresIn: 1209600 }
+        );
+        return accessToken;
       }
     }
 

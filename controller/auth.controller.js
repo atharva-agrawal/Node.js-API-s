@@ -3,89 +3,88 @@ const AuthManager = require('../manager/auth.manager');
 const { STATE, DISTRICT, LOGIN, SIGNUP } = require('../constants/schema');
 const { DISTRICT_MODEL, STATE_MODEL, CHILD_MODEL, SIGNUP_MODEL} = require('../constants/model')
 
-class AuthController extends Controller {
+class AuthController {
 
     constructor() {
-        super();
         this._authManager = new AuthManager();
     }
 
     userSignUp = async (req, res) => {
         try {
-            const userSignup = await this._authManager.signUp(req.body, SIGNUP, require(SIGNUP_MODEL));
-            this.ok(res, userSignup)
+            const userSignup = await this._authManager.signup(req.body, require(SIGNUP_MODEL));
+            res.status(200).send(userSignup);
         } catch (err) {
-            this.error(res, err);
+            res.status(400).send("Signup Failed!");
         }
     }
 
     userLogin = async (req, res) => {
         try {
             const userLogin = await this._authManager.login(req.body, LOGIN);
-            this.ok(res, userLogin)
+            res.status(200).send(userLogin);
         } catch (err) {
-            this.error(res, err);
+            res.status(400).send("Failed to Login");
         }
     }
     userLogout = async (req, res) => {
         try {
             const userLogout = await this._authManager.logout();
-            this.ok(res, userLogout)
+            res.status(200).send(userLogout);
         } catch (err) {
-            this.error(res, err);
+            res.status(400).send("Unable to Logout");
         }
     }
     addState = async (req, res) => {
         try {
             const addState = await this._authManager.addState(req.body, require(STATE_MODEL));
-            this.ok(res, addState)
+            res.status(200).send(addState);
         } catch (err) {
-            this.error(res, err);
+            res.status(400).send("Failed to Add!");
         }
     }
 
     getState = async (req, res) => {
         try {
             const getState = await this._authManager.getState(require(STATE_MODEL));
-            this.ok(res, getState)
+            res.status(200).send(getState);
         } catch (err) {
-            this.error(res, err);
+            res.status(400).send("Failed to Find!");
         }
     }
 
     addDistrict = async (req, res) => {
         try {
-            const updatingService = await this._authManager.updateService(req.body, require(DISTRICT_MODEL));
-            this.ok(res, updatingService)
+            const addDistrict = await this._authManager.updateService(req.body, require(DISTRICT_MODEL));
+            res.status(200).send(addDistrict);
         } catch (err) {
-            this.error(res, err);
+            res.status(400).send("Failed to Add!");
         }
     }
 
     getDistrict = async (req, res) => {
         try {
-            const deletingService = await this._authManager.deleteService(require(DISTRICT_MODEL));
-            this.ok(res, deletingService)
+            const getDistrict = await this._authManager.deleteService(require(DISTRICT_MODEL));
+            res.status(200).send(getDistrict);
         } catch (err) {
-            this.error(res, err);
+            res.status(400).send("Failed to Find!");
         }
     }
 
     addChild = async (req, res) => {
         try {
             const addChild = await this._authManager.addChild(req.body, require(CHILD_MODEL));
-            this.ok(res, addChild)
+            res.status(200).send(addChild);
         } catch (err){
-            this.error(res, err);
+            res.status(400).send("Failed to Add!");
         }
     }
 
     getChild = async (req, res) => {
         try {
             const getChild = await this._authManager.getChild(require(CHILD_MODEL));
-            this.ok(res, getChild)
+            res.status(200).send(getChild);
         } catch (err) {
-            this.error(res, err);
+            res.status(400).send("Child Not Found!");
         }
     }
 }
