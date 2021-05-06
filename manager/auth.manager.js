@@ -1,3 +1,5 @@
+var jwt = require('jsonwebtoken');
+var bcrypt = require('bcryptjs');
 const SCHEMA = require("../constants/schema");
 const randomize = require("randomatic");
 const MODEL = require("../constants/model");
@@ -9,12 +11,21 @@ class AuthManager{
     }
 
     async signup(bodyParams, model){
+      var hashedPassword = bcrypt.hashSync(bodyParams.password, 8);
+      bodyParams.password = hashedPassword;
       bodyParams.user_id = randomize("Aa0", 5);
       const newUser = await this._authRepository.saveOne(model, bodyParams);
       return newUser;
     }
 
     async login(bodyParams, model){
+      const { username, password: pwd } = bodyParams;
+      const checkCredentials = await this._authRepository.findData(model, username, pwd);
+      const { userName, password } = checkCredentials;
+      const checkPassword = await bcrypt.compare(pwd, password);
+      if(bodyParams.username == userName && checkPassword){
+        return 1;
+      }
     }
 
     async logout(bodyParams, model){

@@ -10,14 +10,16 @@ router.get('/login', );
 //User Logout
 router.get('/logout', );
 //Get State
-router.get('/state', );
+router.get('/getState', );
 //Post State
-router.post('/state', );
+router.post('/postState', );
 //Get District
-router.get('/district', );
+router.get('/getDistrict', );
 //Post District
-router.post('/district', );
+router.post('/postDistrict', );
 //Get Child 
-router.get('/child', );
+router.get('/getChild', );
 //Post Child
-router.post('/child', )
+router.post('/postChild', )
+
+module.exports = router;
