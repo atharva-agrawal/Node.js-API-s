@@ -4,7 +4,6 @@ const SCHEMA = require("../constants/schema");
 const randomize = require("randomatic");
 const MODEL = require("../constants/model");
 const AuthRepository = require("../repository/auth.repository");
-
 class AuthManager{
     constructor() {
       this._authRepository = new AuthRepository();
