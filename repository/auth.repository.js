@@ -10,6 +10,15 @@ class AuthRepository{
           throw err;
         }
       }
+
+    async findData(model, username, password)  {
+        try{
+          const q = await model.find({username},{password}).lean().exec()
+          return q;
+        }catch(err){
+          throw err;
+        }
+      }
     
     async findState(id, model){
         try{
